@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Little Explorers Play Center - Safe Fun for Kids 3-9</title>
+    <title>Töfy Oyun Merkezi - 3-9 Yaş Çocuklar İçin Güvenli Eğlence</title>
     <style>
         * {
             margin: 0;
@@ -12,13 +12,14 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            background: #FFF8E1;
         }
 
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 50%, #FFCC80 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -37,7 +38,7 @@
 
         .shape {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.3;
             animation: float 6s ease-in-out infinite;
         }
 
@@ -46,7 +47,7 @@
             left: 10%;
             width: 80px;
             height: 80px;
-            background: #ff6b6b;
+            background: #FF9800;
             border-radius: 50%;
             animation-delay: 0s;
         }
@@ -56,7 +57,7 @@
             right: 15%;
             width: 60px;
             height: 60px;
-            background: #4ecdc4;
+            background: #2E7D8A;
             clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             animation-delay: 2s;
         }
@@ -66,7 +67,7 @@
             left: 20%;
             width: 100px;
             height: 100px;
-            background: #ffe66d;
+            background: #FFB74D;
             border-radius: 20px;
             animation-delay: 4s;
         }
@@ -76,9 +77,19 @@
             right: 10%;
             width: 70px;
             height: 70px;
-            background: #ff8a80;
+            background: #FF8A65;
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             animation-delay: 1s;
+        }
+
+        .shape:nth-child(5) {
+            top: 40%;
+            left: 70%;
+            width: 50px;
+            height: 50px;
+            background: #4FC3F7;
+            transform: rotate(45deg);
+            animation-delay: 3s;
         }
 
         @keyframes float {
@@ -103,79 +114,105 @@
         }
 
         .hero-text {
-            color: white;
+            color: #8B4513;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: bold;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 3px 3px 0px #FFE0B2;
             animation: slideInLeft 1s ease-out;
+            color: #FF9800;
+            letter-spacing: 2px;
         }
 
         .hero-text p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 30px;
-            opacity: 0.9;
+            color: #5D4E75;
             animation: slideInLeft 1s ease-out 0.3s both;
+            font-weight: 600;
         }
 
         .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ff8a80);
+            background: linear-gradient(45deg, #FF9800, #FFB74D);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
             animation: slideInLeft 1s ease-out 0.6s both;
+            border: 3px solid #E65100;
+            font-family: 'Comic Sans MS', cursive;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 152, 0, 0.6);
+            background: linear-gradient(45deg, #FFB74D, #FF9800);
         }
 
         .hero-visual {
             position: relative;
-            height: 400px;
+            height: 500px;
             animation: slideInRight 1s ease-out 0.3s both;
+        }
+
+        .tofy-character {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #FF9800 0%, #F57C00 100%);
+            border-radius: 50%;
+            border: 8px solid #8B4513;
+            animation: bounce 3s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
         }
 
         .play-area {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #2E7D8A 0%, #4FC3F7 100%);
             border-radius: 20px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border: 4px solid #0277BD;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(46, 125, 138, 0.4);
         }
 
         .play-area-1 {
-            top: 0;
-            left: 0;
-            width: 200px;
-            height: 150px;
+            top: 20px;
+            left: 20px;
+            width: 180px;
+            height: 120px;
             animation: bounce 2s infinite;
         }
 
         .play-area-2 {
-            top: 100px;
-            right: 0;
-            width: 180px;
-            height: 120px;
+            top: 120px;
+            right: 20px;
+            width: 160px;
+            height: 100px;
             animation: bounce 2s infinite 0.5s;
         }
 
         .play-area-3 {
-            bottom: 0;
-            left: 50px;
-            width: 160px;
-            height: 100px;
+            bottom: 20px;
+            left: 60px;
+            width: 140px;
+            height: 80px;
             animation: bounce 2s infinite 1s;
         }
 
@@ -184,7 +221,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-15px);
             }
         }
 
@@ -212,7 +249,7 @@
 
         .features {
             padding: 80px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2E7D8A 0%, #4FC3F7 100%);
             position: relative;
         }
 
@@ -223,7 +260,7 @@
             left: 0;
             right: 0;
             height: 100px;
-            background: linear-gradient(180deg, #667eea 0%, transparent 100%);
+            background: linear-gradient(180deg, #FFF8E1 0%, transparent 100%);
         }
 
         .features-container {
@@ -234,21 +271,21 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFCC80 100%);
+            border-radius: 25px;
             padding: 30px;
             text-align: center;
-            color: white;
+            color: #5D4E75;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 5px solid #FF9800;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
         }
 
         .feature-card::before {
@@ -258,7 +295,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%);
             transition: all 0.5s ease;
             transform: scale(0);
         }
@@ -268,33 +305,37 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.3);
+            border-color: #E65100;
         }
 
         .feature-icon {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 20px;
             position: relative;
             z-index: 1;
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 15px;
             position: relative;
             z-index: 1;
+            color: #FF9800;
+            font-weight: bold;
         }
 
         .feature-card p {
-            opacity: 0.9;
             position: relative;
             z-index: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .info-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            background: linear-gradient(135deg, #FFE0B2 0%, #FFF8E1 100%);
             position: relative;
         }
 
@@ -309,33 +350,44 @@
         }
 
         .info-text h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
+            font-size: 3rem;
+            color: #FF9800;
             margin-bottom: 30px;
+            text-shadow: 2px 2px 0px #FFE0B2;
         }
 
         .info-text p {
-            font-size: 1.1rem;
-            color: #34495e;
+            font-size: 1.2rem;
+            color: #5D4E75;
             margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .info-highlight {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
+            background: linear-gradient(135deg, #2E7D8A 0%, #4FC3F7 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border: 4px solid #0277BD;
+            box-shadow: 0 8px 20px rgba(46, 125, 138, 0.3);
+        }
+
+        .info-highlight p {
+            color: white;
+            font-weight: bold;
         }
 
         .age-display {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
             color: white;
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(255, 152, 0, 0.3);
             position: relative;
             overflow: hidden;
+            border: 5px solid #E65100;
         }
 
         .age-display::before {
@@ -359,40 +411,57 @@
         }
 
         .age-display h3 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             position: relative;
             z-index: 1;
+            text-shadow: 2px 2px 0px #E65100;
         }
 
         .age-display p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             position: relative;
             z-index: 1;
+            font-weight: bold;
         }
 
         .footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background: linear-gradient(135deg, #5D4E75 0%, #2E7D8A 100%);
             color: white;
             padding: 60px 0 30px;
             text-align: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(180deg, #FFF8E1 0%, transparent 100%);
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #FFB74D;
+            text-shadow: 2px 2px 0px #2E7D8A;
         }
 
         .footer p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            opacity: 0.9;
+            font-weight: 600;
         }
 
         .footer-cta {
@@ -400,12 +469,30 @@
         }
 
         .footer-cta .cta-button {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
-            margin: 0 10px;
+            background: linear-gradient(45deg, #FF9800, #FFB74D);
+            margin: 0 15px;
+            border: 3px solid #E65100;
         }
 
         .footer-cta .cta-button:hover {
-            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.6);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
+            background: linear-gradient(45deg, #FFB74D, #FF9800);
+        }
+
+        .tofy-footer {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #FF9800 0%, #F57C00 100%);
+            border-radius: 50%;
+            border: 4px solid #FFB74D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
         }
 
         @media (max-width: 768px) {
@@ -425,7 +512,17 @@
             }
 
             .hero-visual {
-                height: 300px;
+                height: 400px;
+            }
+
+            .tofy-character {
+                width: 250px;
+                height: 250px;
+                font-size: 6rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -437,25 +534,27 @@
             <div class="shape"></div>
             <div class="shape"></div>
             <div class="shape"></div>
+            <div class="shape"></div>
         </div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Little Explorers Play Center</h1>
-                <p>Safe, supervised fun for children ages 3-9. Drop off your little ones for up to 90 minutes of adventure while you take care of your day!</p>
-                <button class="cta-button" onclick="scrollToContact()">Book Your Visit Today</button>
+                <h1>Töfy Oyun Merkezi</h1>
+                <p>3-9 yaş çocuklar için güvenli, denetimli eğlence! Küçüklerinizi 90 dakikaya kadar macera dolu bir ortamda bırakın, siz de işlerinizi halledin!</p>
+                <button class="cta-button" onclick="scrollToContact()">🎉 Hemen Rezervasyon Yaptırın</button>
             </div>
             <div class="hero-visual">
+                <div class="tofy-character">🦊</div>
                 <div class="play-area play-area-1">
                     <div style="font-size: 2rem; margin-bottom: 10px;">🎨</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8;">Creative Corner</div>
+                    <div style="font-size: 1rem;">Yaratıcılık Atölyesi</div>
                 </div>
                 <div class="play-area play-area-2">
                     <div style="font-size: 2rem; margin-bottom: 10px;">🏰</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8;">Adventure Zone</div>
+                    <div style="font-size: 1rem;">Macera Dünyası</div>
                 </div>
                 <div class="play-area play-area-3">
                     <div style="font-size: 2rem; margin-bottom: 10px;">📚</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8;">Learning Space</div>
+                    <div style="font-size: 1rem;">Öğrenme Köşesi</div>
                 </div>
             </div>
         </div>
@@ -466,33 +565,33 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Safe & Secure</h3>
-                    <p>Fully supervised environment with trained staff. Your child's safety is our top priority with secure entry and constant supervision.</p>
+                    <h3>Güvenli & Emniyetli</h3>
+                    <p>Töfy ile birlikte eğitimli personel tam denetimde! Çocuğunuzun güvenliği bizim önceliğimiz, güvenli giriş ve sürekli gözetim ile huzur içinde.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⏰</div>
-                    <h3>Flexible Hours</h3>
-                    <p>Drop off for 30 minutes to 90 minutes. Perfect for errands, appointments, or just some well-deserved parent time.</p>
+                    <h3>Esnek Saatler</h3>
+                    <p>30 dakikadan 90 dakikaya kadar esnek süre! Alışveriş, randevu veya sadece kendinize zaman ayırmanız için mükemmel çözüm.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
-                    <h3>Age-Appropriate Fun</h3>
-                    <p>Activities specifically designed for children ages 3-9, ensuring everyone has age-appropriate challenges and entertainment.</p>
+                    <h3>Yaşa Uygun Eğlence</h3>
+                    <p>Töfy'nin rehberliğinde 3-9 yaş çocuklar için özel tasarlanmış aktiviteler! Herkes yaşına uygun eğlence ve meydan okuma bulur.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌟</div>
-                    <h3>Educational Play</h3>
-                    <p>Fun activities that promote learning, creativity, and social skills through interactive play and guided activities.</p>
+                    <h3>Eğitici Oyunlar</h3>
+                    <p>Töfy ile öğrenme, yaratıcılık ve sosyal becerileri geliştiren eğlenceli aktiviteler! İnteraktif oyun ve rehberli etkinlikler.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🧹</div>
-                    <h3>Clean Environment</h3>
-                    <p>Regularly sanitized play areas and toys. We maintain the highest standards of cleanliness for your peace of mind.</p>
+                    <h3>Tertemiz Ortam</h3>
+                    <p>Töfy'nin evi gibi her köşesi tertemiz! Düzenli dezenfekte edilen oyun alanları ve oyuncaklar. En yüksek hijyen standartları.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
-                    <h3>Social Development</h3>
-                    <p>Encourage friendship and social skills in a structured environment where children can interact and play together.</p>
+                    <h3>Sosyal Gelişim</h3>
+                    <p>Töfy'nin dostluk dünyasında çocuklar etkileşime girip birlikte oynar! Arkadaşlık ve sosyal becerileri geliştiren ortam.</p>
                 </div>
             </div>
         </div>
@@ -501,24 +600,24 @@
     <section class="info-section">
         <div class="info-container">
             <div class="info-text">
-                <h2>Perfect for Busy Parents</h2>
-                <p>Need to run errands? Have an appointment? Want some quiet time? Our play center is the perfect solution for busy parents who need a safe, fun place for their children.</p>
+                <h2>Yoğun Ebeveynler İçin Mükemmel!</h2>
+                <p>Alışveriş yapmanız mı gerekiyor? Randevunuz mu var? Biraz sessiz vakit mi istiyorsunuz? Töfy Oyun Merkezi çocukları için güvenli, eğlenceli bir yer arayan yoğun ebeveynler için mükemmel çözüm!</p>
                 
                 <div class="info-highlight">
-                    <p><strong>What We Offer:</strong></p>
-                    <p>• Supervised play activities</p>
-                    <p>• Arts and crafts stations</p>
-                    <p>• Reading corners</p>
-                    <p>• Physical play areas</p>
-                    <p>• Snack time (healthy options available)</p>
-                    <p>• Educational games and puzzles</p>
+                    <p><strong>🎈 Töfy ile Neler Sunuyoruz:</strong></p>
+                    <p>🎪 Denetimli oyun aktiviteleri</p>
+                    <p>🎨 Sanat ve el işi atölyeleri</p>
+                    <p>📖 Töfy'nin okuma köşesi</p>
+                    <p>🏃‍♂️ Aktif fiziksel oyun alanları</p>
+                    <p>🍎 Sağlıklı atıştırmalık zamanı</p>
+                    <p>🧩 Töfy'nin eğitici oyun dünyası</p>
                 </div>
 
-                <p>Our trained staff ensures every child feels welcome, safe, and engaged. We create a nurturing environment where children can explore, learn, and make new friends.</p>
+                <p>Töfy ve eğitimli personelimiz her çocuğun kendini hoş karşılanmış, güvende ve ilgili hissetmesini sağlar. Çocukların keşfedebileceği, öğrenebileceği ve yeni arkadaşlıklar kurabileceği sıcak bir ortam yaratıyoruz.</p>
             </div>
             <div class="age-display">
-                <h3>Ages 3-9 Welcome!</h3>
-                <p>Specially designed activities for different age groups ensure every child has the perfect experience</p>
+                <h3>3-9 Yaş Töfy Ailesi!</h3>
+                <p>Töfy'nin farklı yaş grupları için özel tasarladığı aktiviteler, her çocuğun mükemmel deneyim yaşamasını sağlar</p>
                 <div style="margin-top: 20px; font-size: 1.5rem; position: relative; z-index: 1;">
                     👶 → 👧 → 👦 → 🧒
                 </div>
@@ -528,19 +627,20 @@
 
     <footer class="footer" id="contact">
         <div class="footer-content">
-            <h3>Ready to Give Your Child an Amazing Experience?</h3>
-            <p>📍 123 Main Street, Your City</p>
-            <p>📞 (555) 123-4567</p>
-            <p>📧 info@littleexplorers.com</p>
-            <p>🕒 Monday - Saturday: 8:00 AM - 6:00 PM</p>
+            <h3>🎊 Çocuğunuza Töfy ile Harika Deneyim!</h3>
+            <p>📍 Gebze Merkez, Kocaeli</p>
+            <p>📞 (0262) 123-4567</p>
+            <p>📧 info@tofyoyunmerkezi.com</p>
+            <p>🕒 Pazartesi - Cumartesi: 08:00 - 18:00</p>
             
             <div class="footer-cta">
-                <button class="cta-button">Call Now</button>
-                <button class="cta-button">Visit Us</button>
+                <button class="cta-button">📞 Hemen Arayın</button>
+                <button class="cta-button">🏠 Bizi Ziyaret Edin</button>
             </div>
             
-            <p style="margin-top: 30px; opacity: 0.7;">© 2025 Little Explorers Play Center. Creating safe, fun memories for families.</p>
+            <p style="margin-top: 30px; opacity: 0.8;">© 2025 Töfy Oyun Merkezi. Töfy ile birlikte aileler için güvenli, eğlenceli anılar yaratıyoruz.</p>
         </div>
+        <div class="tofy-footer">🦊</div>
     </footer>
 
     <script>
@@ -556,7 +656,7 @@
             
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
@@ -585,6 +685,21 @@
                 card.style.transform = 'translateY(50px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
+            });
+
+            // Add some fun interactions
+            const tofyCharacter = document.querySelector('.tofy-character');
+            const tofyFooter = document.querySelector('.tofy-footer');
+            
+            [tofyCharacter, tofyFooter].forEach(element => {
+                if (element) {
+                    element.addEventListener('click', function() {
+                        this.style.animation = 'none';
+                        setTimeout(() => {
+                            this.style.animation = 'bounce 1s ease-in-out';
+                        }, 10);
+                    });
+                }
             });
         });
     </script>
