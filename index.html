@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Töfy Oyun Merkezi - 3-9 Yaş Çocuklar İçin Güvenli Eğlence</title>
+    <title>Töfy - Çocuk Oyun Merkezi</title>
     <style>
         * {
             margin: 0;
@@ -12,696 +12,1059 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
             overflow-x: hidden;
-            background: #FFF8E1;
         }
 
-        .hero {
-            background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 50%, #FFCC80 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
+        /* Floating Elements */
         .floating-shapes {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
+            z-index: -1;
         }
 
         .shape {
             position: absolute;
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
         }
 
         .shape:nth-child(1) {
             top: 10%;
             left: 10%;
-            width: 80px;
-            height: 80px;
-            background: #FF9800;
-            border-radius: 50%;
+            font-size: 40px;
             animation-delay: 0s;
         }
 
         .shape:nth-child(2) {
             top: 20%;
             right: 15%;
-            width: 60px;
-            height: 60px;
-            background: #2E7D8A;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            font-size: 35px;
             animation-delay: 2s;
         }
 
         .shape:nth-child(3) {
-            bottom: 20%;
+            bottom: 30%;
             left: 20%;
-            width: 100px;
-            height: 100px;
-            background: #FFB74D;
-            border-radius: 20px;
+            font-size: 45px;
             animation-delay: 4s;
         }
 
         .shape:nth-child(4) {
-            bottom: 30%;
+            bottom: 20%;
             right: 10%;
-            width: 70px;
-            height: 70px;
-            background: #FF8A65;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            animation-delay: 1s;
-        }
-
-        .shape:nth-child(5) {
-            top: 40%;
-            left: 70%;
-            width: 50px;
-            height: 50px;
-            background: #4FC3F7;
-            transform: rotate(45deg);
-            animation-delay: 3s;
+            font-size: 38px;
+            animation-delay: 6s;
         }
 
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-40px) rotate(-3deg); }
+            75% { transform: translateY(-20px) rotate(7deg); }
         }
 
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B1A 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(255, 140, 66, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            position: relative;
-            z-index: 2;
         }
 
-        .hero-text {
-            color: #8B4513;
-        }
-
-        .hero-text h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0px #FFE0B2;
-            animation: slideInLeft 1s ease-out;
-            color: #FF9800;
-            letter-spacing: 2px;
-        }
-
-        .hero-text p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            color: #5D4E75;
-            animation: slideInLeft 1s ease-out 0.3s both;
-            font-weight: 600;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #FF9800, #FFB74D);
-            color: white;
-            padding: 18px 35px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
-            animation: slideInLeft 1s ease-out 0.6s both;
-            border: 3px solid #E65100;
-            font-family: 'Comic Sans MS', cursive;
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(255, 152, 0, 0.6);
-            background: linear-gradient(45deg, #FFB74D, #FF9800);
+        .logo:hover {
+            transform: scale(1.05);
         }
 
-        .hero-visual {
-            position: relative;
-            height: 500px;
-            animation: slideInRight 1s ease-out 0.3s both;
-        }
-
-        .tofy-character {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #FF9800 0%, #F57C00 100%);
+        .logo-circle {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
             border-radius: 50%;
-            border: 8px solid #8B4513;
-            animation: bounce 3s infinite;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 8rem;
-            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
-        }
-
-        .play-area {
-            position: absolute;
-            background: linear-gradient(135deg, #2E7D8A 0%, #4FC3F7 100%);
-            border-radius: 20px;
-            padding: 15px;
-            border: 4px solid #0277BD;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(46, 125, 138, 0.4);
-        }
-
-        .play-area-1 {
-            top: 20px;
-            left: 20px;
-            width: 180px;
-            height: 120px;
-            animation: bounce 2s infinite;
-        }
-
-        .play-area-2 {
-            top: 120px;
-            right: 20px;
-            width: 160px;
-            height: 100px;
-            animation: bounce 2s infinite 0.5s;
-        }
-
-        .play-area-3 {
-            bottom: 20px;
-            left: 60px;
-            width: 140px;
-            height: 80px;
-            animation: bounce 2s infinite 1s;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .features {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #2E7D8A 0%, #4FC3F7 100%);
+            font-size: 35px;
+            border: 4px solid #2E8B8B;
+            animation: pulse 2s infinite;
             position: relative;
+            overflow: hidden;
         }
 
-        .features::before {
+        .logo-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFF, #FFE4B5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2E8B8B 0%, #20B2AA 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 100px;
-            background: linear-gradient(180deg, #FFF8E1 0%, transparent 100%);
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse-bg 4s infinite ease-in-out;
         }
 
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.3);
+            animation: slideInUp 1s ease-out;
+            background: linear-gradient(45deg, #FFF, #FFE4B5, #FFF);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientShift 3s infinite, slideInUp 1s ease-out;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B1A 100%);
+            color: white;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 35px rgba(255, 140, 66, 0.5);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(255, 140, 66, 0.7);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        /* Floating mascot */
+        .floating-mascot {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 120px;
+            animation: mascotFloat 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+        }
+
+        @keyframes mascotFloat {
+            0%, 100% { transform: translateY(-50%) rotate(-5deg); }
+            50% { transform: translateY(-60%) rotate(5deg); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFF 0%, #F8F9FA 100%);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B1A 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 60px;
+            position: relative;
+            animation: titlePulse 2s infinite ease-in-out;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 40px;
+            margin-top: 70px;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, #FFF8E1 0%, #FFCC80 100%);
-            border-radius: 25px;
-            padding: 30px;
+            background: linear-gradient(135deg, #FFF 0%, #F8F9FA 100%);
+            padding: 50px;
+            border-radius: 30px;
             text-align: center;
-            color: #5D4E75;
-            transition: all 0.3s ease;
-            border: 5px solid #FF9800;
+            box-shadow: 0 15px 60px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+            background-clip: padding-box;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
+            cursor: pointer;
         }
 
         .feature-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%);
-            transition: all 0.5s ease;
-            transform: scale(0);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #FF8C42, #2E8B8B, #FF8C42);
+            background-size: 200% 200%;
+            animation: gradientRotate 4s infinite;
+            z-index: -1;
+            border-radius: 30px;
         }
 
-        .feature-card:hover::before {
-            transform: scale(1);
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            background: linear-gradient(135deg, #FFF 0%, #F8F9FA 100%);
+            border-radius: 27px;
+            z-index: -1;
+        }
+
+        @keyframes gradientRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .feature-card:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.3);
-            border-color: #E65100;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+        }
+
+        .feature-card:hover::before {
+            animation-duration: 1s;
         }
 
         .feature-icon {
             font-size: 4rem;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: iconBounce 2s infinite ease-in-out;
+            filter: drop-shadow(0 5px 15px rgba(46,139,139,0.3));
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card:hover .feature-icon {
+            animation-duration: 0.5s;
+            transform: scale(1.2);
         }
 
         .feature-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-            color: #FF9800;
-            font-weight: bold;
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B1A 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
         }
 
         .feature-card p {
-            position: relative;
-            z-index: 1;
+            color: #666;
+            line-height: 1.8;
             font-size: 1.1rem;
-            font-weight: 600;
         }
 
-        .info-section {
+        /* Interactive particle system */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #FF8C42;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat 8s infinite ease-in-out;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Info Section */
+        .info {
             padding: 100px 0;
-            background: linear-gradient(135deg, #FFE0B2 0%, #FFF8E1 100%);
-            position: relative;
-        }
-
-        .info-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .info-text h2 {
-            font-size: 3rem;
-            color: #FF9800;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 0px #FFE0B2;
-        }
-
-        .info-text p {
-            font-size: 1.2rem;
-            color: #5D4E75;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .info-highlight {
-            background: linear-gradient(135deg, #2E7D8A 0%, #4FC3F7 100%);
+            background: linear-gradient(135deg, #2E8B8B 0%, #20B2AA 100%);
             color: white;
-            padding: 25px;
-            border-radius: 20px;
-            margin: 25px 0;
-            border: 4px solid #0277BD;
-            box-shadow: 0 8px 20px rgba(46, 125, 138, 0.3);
-        }
-
-        .info-highlight p {
-            color: white;
-            font-weight: bold;
-        }
-
-        .age-display {
-            background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(255, 152, 0, 0.3);
             position: relative;
             overflow: hidden;
-            border: 5px solid #E65100;
         }
 
-        .age-display::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .age-display h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 0px #E65100;
-        }
-
-        .age-display p {
-            font-size: 1.3rem;
-            position: relative;
-            z-index: 1;
-            font-weight: bold;
-        }
-
-        .footer {
-            background: linear-gradient(135deg, #5D4E75 0%, #2E7D8A 100%);
-            color: white;
-            padding: 60px 0 30px;
-            text-align: center;
-            position: relative;
-        }
-
-        .footer::before {
+        .info::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 80px;
-            background: linear-gradient(180deg, #FFF8E1 0%, transparent 100%);
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: bgMove 20s infinite linear;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes bgMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(10px); }
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 70px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        .footer h3 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #FFB74D;
-            text-shadow: 2px 2px 0px #2E7D8A;
+        .info-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .footer-cta {
-            margin: 40px 0;
-        }
-
-        .footer-cta .cta-button {
-            background: linear-gradient(45deg, #FF9800, #FFB74D);
-            margin: 0 15px;
-            border: 3px solid #E65100;
-        }
-
-        .footer-cta .cta-button:hover {
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
-            background: linear-gradient(45deg, #FFB74D, #FF9800);
-        }
-
-        .tofy-footer {
+        .info-card::before {
+            content: '';
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #FF9800 0%, #F57C00 100%);
-            border-radius: 50%;
-            border: 4px solid #FFB74D;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .info-card:hover::before {
+            left: 100%;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .info-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #FFE4B5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .info-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #FFF 0%, #F8F9FA 100%);
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 70px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE4B5 100%);
+            padding: 50px;
+            border-radius: 30px;
+            border: 3px solid #FF8C42;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,140,66,0.1) 0%, transparent 70%);
+            animation: contactGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes contactGlow {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .contact-info:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(255,140,66,0.3);
+        }
+
+        .contact-info h3 {
+            background: linear-gradient(135deg, #FF8C42 0%, #FF6B1A 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
+            margin-bottom: 20px;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 10px;
         }
 
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
+        .contact-item:hover {
+            background: rgba(255,255,255,0.5);
+            transform: translateX(10px);
+        }
 
-            .hero-text h1 {
+        .contact-item i {
+            color: #2E8B8B;
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #333 0%, #222 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,140,66,0.1), transparent);
+            animation: footerShine 4s infinite ease-in-out;
+        }
+
+        @keyframes footerShine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h2 {
                 font-size: 2.5rem;
             }
-
-            .info-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            
+            .hero p {
+                font-size: 1.1rem;
             }
-
-            .hero-visual {
-                height: 400px;
+            
+            .floating-mascot {
+                display: none;
             }
-
-            .tofy-character {
-                width: 250px;
-                height: 250px;
-                font-size: 6rem;
-            }
-
+            
             .features-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Click ripple effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple:active::before {
+            width: 300px;
+            height: 300px;
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Töfy Oyun Merkezi</h1>
-                <p>3-9 yaş çocuklar için güvenli, denetimli eğlence! Küçüklerinizi 90 dakikaya kadar macera dolu bir ortamda bırakın, siz de işlerinizi halledin!</p>
-                <button class="cta-button" onclick="scrollToContact()">🎉 Hemen Rezervasyon Yaptırın</button>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape">🎮</div>
+        <div class="shape">🎨</div>
+        <div class="shape">🎯</div>
+        <div class="shape">⭐</div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-circle">🦊</div>
+                <h1>Töfy</h1>
             </div>
-            <div class="hero-visual">
-                <div class="tofy-character">🦊</div>
-                <div class="play-area play-area-1">
-                    <div style="font-size: 2rem; margin-bottom: 10px;">🎨</div>
-                    <div style="font-size: 1rem;">Yaratıcılık Atölyesi</div>
-                </div>
-                <div class="play-area play-area-2">
-                    <div style="font-size: 2rem; margin-bottom: 10px;">🏰</div>
-                    <div style="font-size: 1rem;">Macera Dünyası</div>
-                </div>
-                <div class="play-area play-area-3">
-                    <div style="font-size: 2rem; margin-bottom: 10px;">📚</div>
-                    <div style="font-size: 1rem;">Öğrenme Köşesi</div>
-                </div>
+            <ul class="nav-links">
+                <li><a href="#anasayfa" class="ripple">Ana Sayfa</a></li>
+                <li><a href="#hakkimizda" class="ripple">Hakkımızda</a></li>
+                <li><a href="#ozellikler" class="ripple">Özellikler</a></li>
+                <li><a href="#iletisim" class="ripple">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="anasayfa">
+        <div class="particles" id="particles"></div>
+        <div class="floating-mascot">🦊</div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Töfy'ye Hoş Geldiniz!</h2>
+                <p>3-6 yaş arası çocuklar için güvenli, eğlenceli ve eğitici oyun ortamı. 90 dakikaya kadar keyifli oyun deneyimi!</p>
+                <a href="#iletisim" class="cta-button ripple">✨ Hemen Rezervasyon Yap</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <div class="features-container">
+    <section class="features" id="ozellikler">
+        <div class="container">
+            <h2 class="section-title">🌟 Neden Töfy? 🌟</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Eğlenceli Oyun Alanları</h3>
+                    <p>Çocukların hayal gücünü geliştiren, yaratıcılığını destekleyen modern oyun ekipmanları ile donatılmış alanlar.</p>
+                </div>
+                <div class="feature-card fade-in">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Güvenli & Emniyetli</h3>
-                    <p>Töfy ile birlikte eğitimli personel tam denetimde! Çocuğunuzun güvenliği bizim önceliğimiz, güvenli giriş ve sürekli gözetim ile huzur içinde.</p>
+                    <h3>Güvenli Ortam</h3>
+                    <p>Tüm oyun alanları çocuk güvenliği standartlarında tasarlanmış ve sürekli denetim altındadır.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <h3>Esnek Saatler</h3>
-                    <p>30 dakikadan 90 dakikaya kadar esnek süre! Alışveriş, randevu veya sadece kendinize zaman ayırmanız için mükemmel çözüm.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Yaşa Uygun Eğlence</h3>
-                    <p>Töfy'nin rehberliğinde 3-9 yaş çocuklar için özel tasarlanmış aktiviteler! Herkes yaşına uygun eğlence ve meydan okuma bulur.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌟</div>
-                    <h3>Eğitici Oyunlar</h3>
-                    <p>Töfy ile öğrenme, yaratıcılık ve sosyal becerileri geliştiren eğlenceli aktiviteler! İnteraktif oyun ve rehberli etkinlikler.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧹</div>
-                    <h3>Tertemiz Ortam</h3>
-                    <p>Töfy'nin evi gibi her köşesi tertemiz! Düzenli dezenfekte edilen oyun alanları ve oyuncaklar. En yüksek hijyen standartları.</p>
-                </div>
-                <div class="feature-card">
+                <div class="feature-card fade-in">
                     <div class="feature-icon">👥</div>
                     <h3>Sosyal Gelişim</h3>
-                    <p>Töfy'nin dostluk dünyasında çocuklar etkileşime girip birlikte oynar! Arkadaşlık ve sosyal becerileri geliştiren ortam.</p>
+                    <p>Çocukların akranlarıyla etkileşim kurarak sosyal becerilerini geliştirmelerine olanak sağlar.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Yaş Grupuna Uygun</h3>
+                    <p>3-6 yaş arası çocukların gelişim özelliklerine özel olarak tasarlanmış aktiviteler ve oyun alanları.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Esnek Süre</h3>
+                    <p>90 dakikaya kadar oyun süresi ile çocuklar hem eğlenir hem de yorulmadan keyifli vakit geçirir.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Eğitici Aktiviteler</h3>
+                    <p>Oyun ile öğrenmeyi birleştiren, motor becerilerini ve bilişsel gelişimi destekleyen aktiviteler.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="info-section">
-        <div class="info-container">
-            <div class="info-text">
-                <h2>Yoğun Ebeveynler İçin Mükemmel!</h2>
-                <p>Alışveriş yapmanız mı gerekiyor? Randevunuz mu var? Biraz sessiz vakit mi istiyorsunuz? Töfy Oyun Merkezi çocukları için güvenli, eğlenceli bir yer arayan yoğun ebeveynler için mükemmel çözüm!</p>
-                
-                <div class="info-highlight">
-                    <p><strong>🎈 Töfy ile Neler Sunuyoruz:</strong></p>
-                    <p>🎪 Denetimli oyun aktiviteleri</p>
-                    <p>🎨 Sanat ve el işi atölyeleri</p>
-                    <p>📖 Töfy'nin okuma köşesi</p>
-                    <p>🏃‍♂️ Aktif fiziksel oyun alanları</p>
-                    <p>🍎 Sağlıklı atıştırmalık zamanı</p>
-                    <p>🧩 Töfy'nin eğitici oyun dünyası</p>
+    <section class="info" id="hakkimizda">
+        <div class="container">
+            <h2 class="section-title">🦊 Töfy Hakkında 🦊</h2>
+            <div class="info-grid">
+                <div class="info-card fade-in">
+                    <h3>🎯 Misyonumuz</h3>
+                    <p>Çocukların güvenli ve eğlenceli bir ortamda oyun oynayarak gelişimlerini desteklemek</p>
                 </div>
-
-                <p>Töfy ve eğitimli personelimiz her çocuğun kendini hoş karşılanmış, güvende ve ilgili hissetmesini sağlar. Çocukların keşfedebileceği, öğrenebileceği ve yeni arkadaşlıklar kurabileceği sıcak bir ortam yaratıyoruz.</p>
-            </div>
-            <div class="age-display">
-                <h3>3-9 Yaş Töfy Ailesi!</h3>
-                <p>Töfy'nin farklı yaş grupları için özel tasarladığı aktiviteler, her çocuğun mükemmel deneyim yaşamasını sağlar</p>
-                <div style="margin-top: 20px; font-size: 1.5rem; position: relative; z-index: 1;">
-                    👶 → 👧 → 👦 → 🧒
+                <div class="info-card fade-in">
+                    <h3>🌟 Vizyonumuz</h3>
+                    <p>Her çocuğun mutlu ve sağlıklı gelişimi için en iyi oyun deneyimini sunmak</p>
+                </div>
+                <div class="info-card fade-in">
+                    <h3>❤️ Değerlerimiz</h3>
+                    <p>Güvenlik, eğlence, öğrenme ve ailelerin huzuru önceliklerimizdir</p>
+                </div>
+                <div class="info-card fade-in">
+                    <h3>🏆 Deneyimimiz</h3>
+                    <p>Çocuk gelişimi uzmanları tarafından tasarlanmış profesyonel hizmet</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <h3>🎊 Çocuğunuza Töfy ile Harika Deneyim!</h3>
-            <p>📍 Gebze Merkez, Kocaeli</p>
-            <p>📞 (0262) 123-4567</p>
-            <p>📧 info@tofyoyunmerkezi.com</p>
-            <p>🕒 Pazartesi - Cumartesi: 08:00 - 18:00</p>
-            
-            <div class="footer-cta">
-                <button class="cta-button">📞 Hemen Arayın</button>
-                <button class="cta-button">🏠 Bizi Ziyaret Edin</button>
+    <section class="contact" id="iletisim">
+        <div class="container">
+            <h2 class="section-title">📞 İletişim 📞</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>🦊 Bize Ulaşın</h3>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <p>Adres: [Adresinizi buraya yazın]</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <p>Telefon: [Telefon numaranızı buraya yazın]</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>✉️</i>
+                        <p>E-posta: [E-posta adresinizi buraya yazın]</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>🕒</i>
+                        <p>Çalışma Saatleri: [Çalışma saatlerinizi buraya yazın]</p>
+                    </div>
+                </div>
+                <div class="contact-info fade-in">
+                    <h3>🎟️ Rezervasyon Bilgileri</h3>
+                    <div class="contact-item">
+                        <i>🎯</i>
+                        <p>Yaş Grubu: 3-6 yaş arası çocuklar</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>⏱️</i>
+                        <p>Oyun Süresi: 90 dakikaya kadar</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>💳</i>
+                        <p>Ödeme: Nakit ve kredi kartı kabul edilir</p>
+                    </div>
+                    <div class="contact-item">
+                        <i>🎉</i>
+                        <p>Doğum günü partileri için özel paketler</p>
+                    </div>
+                </div>
             </div>
-            
-            <p style="margin-top: 30px; opacity: 0.8;">© 2025 Töfy Oyun Merkezi. Töfy ile birlikte aileler için güvenli, eğlenceli anılar yaratıyoruz.</p>
         </div>
-        <div class="tofy-footer">🦊</div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Töfy Çocuk Oyun Merkezi. Tüm hakları saklıdır.</p>
+            <p>Çocukların güvenli eğlencesi için tasarlandı ❤️</p>
+        </div>
     </footer>
 
     <script>
-        function scrollToContact() {
-            document.getElementById('contact').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
+        // Particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                
+                const colors = ['#FF8C42', '#2E8B8B', '#FFE4B5'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 8000);
+            }
+            
+            setInterval(createParticle, 300);
         }
 
-        // Add some interactive elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card');
-            
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-15px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-
-            // Add scroll animation
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all feature cards
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
-
-            // Add some fun interactions
-            const tofyCharacter = document.querySelector('.tofy-character');
-            const tofyFooter = document.querySelector('.tofy-footer');
-            
-            [tofyCharacter, tofyFooter].forEach(element => {
-                if (element) {
-                    element.addEventListener('click', function() {
-                        this.style.animation = 'none';
-                        setTimeout(() => {
-                            this.style.animation = 'bounce 1s ease-in-out';
-                        }, 10);
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Interactive logo animation
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('mouseenter', () => {
+            logo.style.transform = 'scale(1.1) rotate(5deg)';
+        });
+        logo.addEventListener('mouseleave', () => {
+            logo.style.transform = 'scale(1) rotate(0deg)';
+        });
+
+        // Feature cards interactive effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-20px) scale(1.05) rotateY(5deg)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
+            });
+        });
+
+        // CTA button interactive effect
+        const ctaButton = document.querySelector('.cta-button');
+        ctaButton.addEventListener('mouseenter', () => {
+            ctaButton.style.boxShadow = '0 20px 60px rgba(255, 140, 66, 0.8)';
+        });
+        ctaButton.addEventListener('mouseleave', () => {
+            ctaButton.style.boxShadow = '0 10px 35px rgba(255, 140, 66, 0.5)';
+        });
+
+        // Contact items hover effects
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(15px) scale(1.05)';
+                item.style.background = 'rgba(255, 140, 66, 0.1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0) scale(1)';
+                item.style.background = 'transparent';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const mascot = document.querySelector('.floating-mascot');
+            
+            if (hero && mascot) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                mascot.style.transform = `translateY(${-50 + scrolled * 0.3}%) rotate(${scrolled * 0.1}deg)`;
+            }
+        });
+
+        // Dynamic title animation
+        const heroTitle = document.querySelector('.hero h2');
+        let titleIndex = 0;
+        const titles = [
+            'Töfy\'ye Hoş Geldiniz!',
+            'Eğlencenin Adresi!',
+            'Çocuklar Burada Mutlu!',
+            'Güvenli Oyun Merkezi!'
+        ];
+
+        setInterval(() => {
+            heroTitle.style.opacity = '0';
+            setTimeout(() => {
+                titleIndex = (titleIndex + 1) % titles.length;
+                heroTitle.textContent = titles[titleIndex];
+                heroTitle.style.opacity = '1';
+            }, 500);
+        }, 4000);
+
+        // Navigation active state
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Mouse trail effect
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style.position = 'fixed';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            trail.style.width = '6px';
+            trail.style.height = '6px';
+            trail.style.background = '#FF8C42';
+            trail.style.borderRadius = '50%';
+            trail.style.pointerEvents = 'none';
+            trail.style.opacity = '0.7';
+            trail.style.zIndex = '9999';
+            trail.style.transition = 'all 0.3s ease';
+            
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    trail.remove();
+                }, 300);
+            }, 50);
+        });
+
+        // Add active class to navigation
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-links a.active {
+                background: rgba(255,255,255,0.3) !important;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
